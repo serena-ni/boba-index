@@ -8,228 +8,288 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg: #fbf8f5;
-  --panel: #ffffff;
-  --ink: #262626;
-  --muted: #6f6f6f;
+:root{
+  --bg:#f7f8fb;
+  --panel:#ffffff;
+  --ink:#1c1c1c;
+  --muted:#6f7280;
+  --border:#e8eaf0;
 
-  /* Consistent dimension colors */
-  --tea: #a05a2c;
-  --cream: #b79ac8;
-  --sweet: #ff6f91;
-  --aroma: #4fb7b2;
+  --tea:#8b4a2f;
+  --cream:#b6a0d6;
+  --sweet:#ef7c96;
+  --aroma:#4fb3ad;
 
-  --radius: 18px;
-  --shadow: 0 25px 60px rgba(0,0,0,0.08);
+  --radius:18px;
+  --shadow:0 16px 45px rgba(0,0,0,.08);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0}
 
-body {
-  font-family: "Inter", sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.6;
+body{
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.5;
 }
 
-header, section {
-  max-width: 1150px;
-  margin: auto;
-  padding: 4rem 2rem;
+header,section,footer{
+  max-width:1200px;
+  margin:auto;
+  padding:4rem 2rem;
 }
 
-header {
-  padding-top: 5rem;
-  text-align: center;
+/* ---------- HEADER ---------- */
+
+header{
+  text-align:center;
+  padding-top:5rem;
 }
 
-header h1 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(3rem, 5vw, 4.2rem);
-  margin-bottom: 1rem;
+header h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(3rem,5vw,4.2rem);
+  margin-bottom:1rem;
 }
 
-header p {
-  max-width: 640px;
-  margin: auto;
-  color: var(--muted);
+header p{
+  max-width:760px;
+  margin:auto;
+  color:var(--muted);
+  font-size:1rem;
 }
 
-/* ---------- Section title + info ---------- */
+/* ---------- SECTION HEAD ---------- */
 
-.section-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 2.5rem;
+.section-head{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:.8rem;
+  margin-bottom:3rem;
 }
 
-.section-title h2 {
-  font-family: "Playfair Display", serif;
-  font-size: 2rem;
+.section-head h2{
+  font-family:"Playfair Display",serif;
+  font-size:2rem;
 }
 
-.info-btn {
-  position: relative;
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: white;
-  background: linear-gradient(135deg, #ff8fab, #b79ac8);
-  cursor: help;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ---------- INFO (HOVER) ---------- */
+
+.info{position:relative}
+
+.info-btn{
+  font-size:.72rem;
+  padding:.35rem .8rem;
+  border-radius:999px;
+  background:#f1f2f7;
+  color:#5f5a88;
+  border:1px solid var(--border);
+  cursor:default;
 }
 
-.info-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+.info-text{
+  position:absolute;
+  top:140%;
+  left:50%;
+  transform:translateX(-50%) translateY(6px);
+  width:300px;
+  background:var(--panel);
+  border-radius:14px;
+  padding:1rem 1.2rem;
+  font-size:.78rem;
+  color:var(--muted);
+  box-shadow:var(--shadow);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s ease;
 }
 
-.info-btn span {
-  position: absolute;
-  bottom: 140%;
-  left: 50%;
-  transform: translateX(-50%) translateY(6px);
-  width: 260px;
-  background: var(--panel);
-  color: var(--ink);
-  padding: 0.8rem;
-  border-radius: 14px;
-  font-size: 0.75rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s ease;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+.info:hover .info-text{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
 }
 
-.info-btn:hover span {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
+/* ---------- LEGEND ---------- */
+
+.legend{
+  display:flex;
+  justify-content:center;
+  gap:1.5rem;
+  margin-bottom:3rem;
+  flex-wrap:wrap;
+  font-size:.75rem;
+  color:var(--muted);
 }
 
-/* ---------- Cards ---------- */
-
-.index {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 2rem;
+.legend span{
+  display:flex;
+  align-items:center;
+  gap:.4rem;
 }
 
-.card {
-  background: var(--panel);
-  border-radius: var(--radius);
-  padding: 2.4rem 2rem;
-  box-shadow: var(--shadow);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 40px 90px rgba(0,0,0,0.12);
+/* ---------- CARDS ---------- */
+
+.index{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:2rem;
 }
 
-.card h3 {
-  margin-bottom: 1.3rem;
-  font-weight: 600;
+.card{
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:2.2rem 2rem;
+  box-shadow:var(--shadow);
+  transition:.35s ease;
 }
 
-/* ---------- Bars ---------- */
+.card:hover{transform:translateY(-4px)}
 
-.metric {
-  margin-bottom: 1.1rem;
+.card h3{margin-bottom:1.2rem}
+
+/* ---------- METRICS ---------- */
+
+.metric{margin-bottom:1rem}
+
+.label{
+  display:flex;
+  justify-content:space-between;
+  font-size:.75rem;
+  color:var(--muted);
+  margin-bottom:.35rem;
 }
 
-.label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.82rem;
-  color: var(--muted);
-  margin-bottom: 0.35rem;
+.bar{
+  height:11px;
+  background:#edf0f6;
+  border-radius:999px;
+  overflow:hidden;
 }
 
-.bar {
-  height: 12px;
-  background: #ececec;
-  border-radius: 999px;
-  overflow: hidden;
+.fill{
+  height:100%;
+  border-radius:999px;
+  transition:width .8s ease;
 }
 
-.fill {
-  height: 100%;
-  border-radius: 999px;
-  transition: width 0.8s ease, filter 0.3s ease;
-}
-
-.bar:hover .fill {
-  filter: brightness(1.1);
-}
-
-/* Empty / N/A */
-.na {
-  background: repeating-linear-gradient(
+.na{
+  background:repeating-linear-gradient(
     45deg,
-    #ddd,
-    #ddd 6px,
-    #eee 6px,
-    #eee 12px
+    #dcdfe8,
+    #dcdfe8 6px,
+    #eef0f6 6px,
+    #eef0f6 12px
   );
 }
 
-/* Width helpers */
-.w0 { width: 0%; }
-.w40 { width: 40%; }
-.w50 { width: 50%; }
-.w60 { width: 60%; }
-.w70 { width: 70%; }
-.w80 { width: 80%; }
-.w90 { width: 90%; }
+/* widths */
+.w0{width:0}
+.w55{width:55%}
+.w60{width:60%}
+.w65{width:65%}
+.w70{width:70%}
+.w75{width:75%}
+.w80{width:80%}
+.w85{width:85%}
+.w90{width:90%}
 
-/* Colors */
-.tea { background: var(--tea); }
-.cream { background: var(--cream); }
-.sweet { background: var(--sweet); }
-.aroma { background: var(--aroma); }
+/* colors */
+.tea{background:var(--tea)}
+.cream{background:var(--cream)}
+.sweet{background:var(--sweet)}
+.aroma{background:var(--aroma)}
 
-/* ---------- Toggle notes ---------- */
+/* ---------- NOTES ---------- */
 
-.toggle input { display: none; }
+.toggle input{display:none}
 
-.note-toggle {
-  display: inline-block;
-  margin-top: 0.6rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #b85f82;
-  cursor: pointer;
+.note-toggle{
+  display:inline-block;
+  margin-top:.6rem;
+  font-size:.78rem;
+  font-weight:600;
+  color:#6a5acd;
+  cursor:pointer;
 }
 
-.note {
-  margin-top: 0.8rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: 0.4s ease;
+.note{
+  margin-top:.6rem;
+  font-size:.78rem;
+  color:var(--muted);
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:.35s ease;
 }
 
-.toggle input:checked ~ .note {
-  max-height: 140px;
-  opacity: 1;
+.toggle input:checked~.note{
+  max-height:120px;
+  opacity:1;
 }
 
-/* ---------- Footer ---------- */
+/* ---------- SOURCES ---------- */
 
-footer {
-  text-align: center;
-  padding: 3rem 2rem;
-  font-size: 0.85rem;
-  color: var(--muted);
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem;
+  margin-top:1rem;
+}
+
+.chip{
+  font-size:.68rem;
+  padding:.35rem .7rem;
+  border-radius:999px;
+  background:#f7f8fc;
+  border:1px solid var(--border);
+  color:var(--muted);
+  text-decoration:none;
+}
+
+.chip:hover{color:var(--ink)}
+
+/* ---------- CHART ---------- */
+
+.chart{
+  margin-top:4rem;
+  background:var(--panel);
+  padding:2.5rem;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+.row{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  align-items:center;
+  margin-bottom:1.2rem;
+  font-size:.8rem;
+}
+
+.multi{
+  display:flex;
+  gap:6px;
+}
+
+.multi div{
+  height:13px;
+  border-radius:999px;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+  text-align:center;
+  font-size:.75rem;
+  color:var(--muted);
 }
 </style>
 </head>
@@ -238,98 +298,122 @@ footer {
 
 <header>
   <h1>Boba Flavor Index</h1>
-  <p>A structured comparison system analyzing boba drinks across consistent sensory dimensions.</p>
+  <p>
+    <strong>Boba</strong> (also known as bubble tea) is a tea-based drink originating in Taiwan,
+    typically combining brewed tea, milk or fruit flavors, sweetness, and chewy tapioca pearls.
+    This index compares popular boba drinks using consistent sensory measurements.
+  </p>
 </header>
 
 <section>
-  <div class="section-title">
+
+  <div class="legend">
+    <span><span class="dot tea"></span>Tea Intensity</span>
+    <span><span class="dot cream"></span>Creaminess</span>
+    <span><span class="dot sweet"></span>Sweetness</span>
+    <span><span class="dot aroma"></span>Aroma</span>
+  </div>
+
+  <div class="section-head">
     <h2>Flavor Profiles</h2>
-    <div class="info-btn">ⓘ
-      <span>
-        Each drink is evaluated using the same four dimensions so flavors can be directly compared.
-        Empty bars indicate that a dimension does not meaningfully apply.
-      </span>
+    <div class="info">
+      <span class="info-btn">Info</span>
+      <div class="info-text">
+        <strong>Flavor Profiles</strong><br>
+        Each drink is evaluated using the same four dimensions.
+        Empty bars indicate a dimension does not meaningfully apply.
+      </div>
     </div>
   </div>
 
   <div class="index">
 
-    <!-- Classic -->
+    <!-- Classic Milk Tea -->
     <div class="card toggle">
       <h3>Classic Milk Tea</h3>
-
-      <div class="metric">
-        <div class="label"><span>Tea Intensity</span><span>80%</span></div>
-        <div class="bar"><div class="fill tea w80"></div></div>
-      </div>
-
-      <div class="metric">
-        <div class="label"><span>Creaminess</span><span>70%</span></div>
-        <div class="bar"><div class="fill cream w70"></div></div>
-      </div>
-
-      <div class="metric">
-        <div class="label"><span>Sweetness</span><span>60%</span></div>
-        <div class="bar"><div class="fill sweet w60"></div></div>
-      </div>
-
-      <div class="metric">
-        <div class="label"><span>Aroma</span><span>40%</span></div>
-        <div class="bar"><div class="fill aroma w40"></div></div>
-      </div>
-
-      <input type="checkbox" id="f1">
-      <label for="f1" class="note-toggle">Show flavor notes</label>
-      <p class="note">Balanced and familiar with a strong black tea backbone.</p>
+      <div class="metric"><div class="label"><span>Tea Intensity</span><span>80%</span></div><div class="bar"><div class="fill tea w80"></div></div></div>
+      <div class="metric"><div class="label"><span>Creaminess</span><span>70%</span></div><div class="bar"><div class="fill cream w70"></div></div></div>
+      <div class="metric"><div class="label"><span>Sweetness</span><span>60%</span></div><div class="bar"><div class="fill sweet w60"></div></div></div>
+      <div class="metric"><div class="label"><span>Aroma</span><span>40%</span></div><div class="bar"><div class="fill aroma w40"></div></div></div>
+      <input type="checkbox" id="n1"><label for="n1" class="note-toggle">Flavor notes</label>
+      <p class="note">Balanced black tea with gentle dairy richness.</p>
+      <div class="chips"><a class="chip" href="https://en.wikipedia.org/wiki/Milk_tea" target="_blank">Milk tea</a></div>
     </div>
 
-    <!-- Brown Sugar -->
+    <!-- Thai Tea -->
     <div class="card toggle">
-      <h3>Brown Sugar Milk Tea</h3>
-
-      <div class="metric"><div class="label"><span>Tea Intensity</span><span>40%</span></div>
-        <div class="bar"><div class="fill tea w40"></div></div></div>
-
-      <div class="metric"><div class="label"><span>Creaminess</span><span>90%</span></div>
-        <div class="bar"><div class="fill cream w90"></div></div></div>
-
-      <div class="metric"><div class="label"><span>Sweetness</span><span>90%</span></div>
-        <div class="bar"><div class="fill sweet w90"></div></div></div>
-
-      <div class="metric"><div class="label"><span>Aroma</span><span>50%</span></div>
-        <div class="bar"><div class="fill aroma w50"></div></div></div>
-
-      <input type="checkbox" id="f2">
-      <label for="f2" class="note-toggle">Show flavor notes</label>
-      <p class="note">Dessert-like, rich, and caramel-forward.</p>
+      <h3>Thai Tea</h3>
+      <div class="metric"><div class="label"><span>Tea Intensity</span><span>70%</span></div><div class="bar"><div class="fill tea w70"></div></div></div>
+      <div class="metric"><div class="label"><span>Creaminess</span><span>85%</span></div><div class="bar"><div class="fill cream w85"></div></div></div>
+      <div class="metric"><div class="label"><span>Sweetness</span><span>80%</span></div><div class="bar"><div class="fill sweet w80"></div></div></div>
+      <div class="metric"><div class="label"><span>Aroma</span><span>60%</span></div><div class="bar"><div class="fill aroma w60"></div></div></div>
+      <input type="checkbox" id="n2"><label for="n2" class="note-toggle">Flavor notes</label>
+      <p class="note">Spiced, creamy, dessert-forward.</p>
+      <div class="chips"><a class="chip" href="https://en.wikipedia.org/wiki/Thai_tea" target="_blank">Thai tea</a></div>
     </div>
 
-    <!-- Honey Green -->
+    <!-- Jasmine Green Milk Tea -->
+    <div class="card toggle">
+      <h3>Jasmine Green Milk Tea</h3>
+      <div class="metric"><div class="label"><span>Tea Intensity</span><span>75%</span></div><div class="bar"><div class="fill tea w75"></div></div></div>
+      <div class="metric"><div class="label"><span>Creaminess</span><span>65%</span></div><div class="bar"><div class="fill cream w65"></div></div></div>
+      <div class="metric"><div class="label"><span>Sweetness</span><span>55%</span></div><div class="bar"><div class="fill sweet w55"></div></div></div>
+      <div class="metric"><div class="label"><span>Aroma</span><span>85%</span></div><div class="bar"><div class="fill aroma w85"></div></div></div>
+      <input type="checkbox" id="n3"><label for="n3" class="note-toggle">Flavor notes</label>
+      <p class="note">Floral, light, and aromatic.</p>
+      <div class="chips"><a class="chip" href="https://en.wikipedia.org/wiki/Jasmine_tea" target="_blank">Jasmine tea</a></div>
+    </div>
+
+    <!-- Oolong Milk Tea -->
+    <div class="card toggle">
+      <h3>Oolong Milk Tea</h3>
+      <div class="metric"><div class="label"><span>Tea Intensity</span><span>85%</span></div><div class="bar"><div class="fill tea w85"></div></div></div>
+      <div class="metric"><div class="label"><span>Creaminess</span><span>65%</span></div><div class="bar"><div class="fill cream w65"></div></div></div>
+      <div class="metric"><div class="label"><span>Sweetness</span><span>55%</span></div><div class="bar"><div class="fill sweet w55"></div></div></div>
+      <div class="metric"><div class="label"><span>Aroma</span><span>75%</span></div><div class="bar"><div class="fill aroma w75"></div></div></div>
+      <input type="checkbox" id="n4"><label for="n4" class="note-toggle">Flavor notes</label>
+      <p class="note">Roasted, smooth, tea-forward.</p>
+      <div class="chips"><a class="chip" href="https://en.wikipedia.org/wiki/Oolong" target="_blank">Oolong tea</a></div>
+    </div>
+
+    <!-- Honey Green Tea -->
     <div class="card toggle">
       <h3>Honey Green Tea</h3>
-
-      <div class="metric"><div class="label"><span>Tea Intensity</span><span>65%</span></div>
-        <div class="bar"><div class="fill tea w65"></div></div></div>
-
-      <div class="metric"><div class="label"><span>Creaminess</span><span>N/A</span></div>
-        <div class="bar"><div class="fill na w0"></div></div></div>
-
-      <div class="metric"><div class="label"><span>Sweetness</span><span>55%</span></div>
-        <div class="bar"><div class="fill sweet w55"></div></div></div>
-
-      <div class="metric"><div class="label"><span>Aroma</span><span>70%</span></div>
-        <div class="bar"><div class="fill aroma w70"></div></div></div>
-
-      <input type="checkbox" id="f3">
-      <label for="f3" class="note-toggle">Show flavor notes</label>
-      <p class="note">Light, refreshing, and tea-forward with floral honey notes.</p>
+      <div class="metric"><div class="label"><span>Tea Intensity</span><span>65%</span></div><div class="bar"><div class="fill tea w65"></div></div></div>
+      <div class="metric"><div class="label"><span>Creaminess</span><span>N/A</span></div><div class="bar"><div class="fill na w0"></div></div></div>
+      <div class="metric"><div class="label"><span>Sweetness</span><span>55%</span></div><div class="bar"><div class="fill sweet w55"></div></div></div>
+      <div class="metric"><div class="label"><span>Aroma</span><span>70%</span></div><div class="bar"><div class="fill aroma w70"></div></div></div>
+      <input type="checkbox" id="n5"><label for="n5" class="note-toggle">Flavor notes</label>
+      <p class="note">Clean, refreshing, lightly floral.</p>
+      <div class="chips"><a class="chip" href="https://en.wikipedia.org/wiki/Green_tea" target="_blank">Green tea</a></div>
     </div>
 
   </div>
+
+  <div class="chart">
+    <div class="section-head">
+      <h2>Comparative Texture Scale</h2>
+      <div class="info">
+        <span class="info-btn">Info</span>
+        <div class="info-text">
+          <strong>Comparative Texture Scale</strong><br>
+          Represents perceived mouthfeel by layering
+          tea intensity, creaminess, and sweetness.
+        </div>
+      </div>
+    </div>
+
+    <div class="row"><span>Classic Milk Tea</span><div class="multi"><div class="tea w80"></div><div class="cream w70"></div><div class="sweet w60"></div></div></div>
+    <div class="row"><span>Thai Tea</span><div class="multi"><div class="tea w70"></div><div class="cream w85"></div><div class="sweet w80"></div></div></div>
+    <div class="row"><span>Jasmine Green Milk Tea</span><div class="multi"><div class="tea w75"></div><div class="cream w65"></div><div class="sweet w55"></div></div></div>
+    <div class="row"><span>Oolong Milk Tea</span><div class="multi"><div class="tea w85"></div><div class="cream w65"></div><div class="sweet w55"></div></div></div>
+    <div class="row"><span>Honey Green Tea</span><div class="multi"><div class="tea w65"></div><div class="sweet w55"></div></div></div>
+  </div>
+
 </section>
 
 <footer>
-Boba Flavor Index · HTML + CSS only
+Hack Club Boba Olympics 2026
 </footer>
 
 </body>
